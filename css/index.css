@@ -5485,10 +5485,14 @@ dl.no_members {
 
 /* This one does 800 screens at default font size. */
 @media screen and (max-width: 50em) {
+	.listlevel1.subsections .linklevel1:after {
+		display: none;
+	}
 
-.listlevel1.subsections .linklevel1:after {
-display: none;
-}
+	#theme_selector {
+		display: none;
+	}
+
 	#siteslogan, #news, #search_form select {
 		display: none;
 	}
