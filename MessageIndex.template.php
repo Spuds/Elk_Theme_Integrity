@@ -240,11 +240,11 @@ function template_topic_listing()
 				if (!empty($topic['last_post']['member']['avatar']))
 				{
 					echo '
-						<div class="board_avatar">
-							<a href="', $topic['last_post']['member']['href'], '">
-								<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" />
-							</a>
-						</div>';
+					<div class="board_avatar', ($topic['is_posted_in'] ? ' fred' : ''), '">
+						<a href="', $topic['last_post']['member']['href'], '">
+							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" />
+						</a>
+					</div>';
 				}
 			}
 			else

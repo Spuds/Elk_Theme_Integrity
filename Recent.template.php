@@ -5,18 +5,16 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.3
+ * @version 1.1
  *
  */
 
 /**
- * We need some help to proprerly display things
+ * We need some help to properly display things
  */
 function template_Recent_init()
 {
@@ -33,12 +31,12 @@ function template_recent()
 	template_pagesection();
 
 	echo '
-		<div id="recentposts" class="forumposts">
+		<div id="recentposts">
 			<h3 class="category_header hdicon cat_img_posts">', $txt['recent_posts'], '</h3>';
 
 	foreach ($context['posts'] as $post)
 	{
-		$post['class'] = $post['alternate'] == 0 ? 'windowbg' : 'windowbg2';
+		$post['class'] = 'content';
 		$post['title'] = $post['board']['link'] . ' / ' . $post['link'];
 		$post['date'] = $txt['last_post'] . ' ' . $txt['by'] . ' <strong>' . $post['poster']['link'] . ' </strong> - ' . $post['html_time'];
 
@@ -52,9 +50,9 @@ function template_recent()
 
 	if (!empty($context['using_relative_time']))
 		echo '
-		<script><!-- // --><![CDATA[
+		<script>
 			$(\'.topic_latest\').addClass(\'relative\');
-		// ]]></script>';
+		</script>';
 }
 
 /**
@@ -62,7 +60,7 @@ function template_recent()
  */
 function template_unread()
 {
-	global $context, $txt, $scripturl;
+	global $context, $txt, $scripturl, $modSettings;
 
 	$message_icon_sprite = array('clip' => '', 'lamp' => '', 'poll' => '', 'question' => '', 'xx' => '', 'moved' => '', 'exclamation' => '', 'thumbup' => '', 'thumbdown' => '');
 
@@ -72,10 +70,10 @@ function template_unread()
 
 		if ($context['showCheckboxes'])
 			echo '
-					<form action="', $scripturl, '?action=quickmod" method="post" accept-charset="UTF-8" name="quickModForm" id="quickModForm" style="margin: 0;">
+					<form id="quickModForm" action="', $scripturl, '?action=quickmod" method="post" accept-charset="UTF-8" name="quickModForm">
 						<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '" />
 						<input type="hidden" name="qaction" value="markread" />
-						<input type="hidden" name="redirect_url" value="action=unread', (!empty($context['showing_all_topics']) ? ';all' : ''), $context['querystring_board_limits'], '" />';
+						<input type="hidden" name="redirect_url" value="', $context['querystring_board_limits'], '" />';
 
 		echo '
 						<h2 class="category_header" id="unread_header">
@@ -98,13 +96,13 @@ function template_unread()
 								<i class="fa fa-', $fa_key[$key], ($context['sort_by'] === $key ? ' sort_active' : ''), '" title="', $txt[$key], '"></i>
 							</a>
 						</li>';
-						
+
 		if ($context['showCheckboxes'])
 			echo '
 						<li class="quickmod_select_all">
 							<input type="checkbox" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" class="input_check" />
-						</li>';						
-		
+						</li>';
+
 		echo '		</ul>
 				</div>
 						<ul class="topic_listing" id="unread">';
@@ -127,7 +125,7 @@ function template_unread()
 			echo '
 							<li class="', $color_class, '">
 								<div class="topic_info">
-									<p class="topic_icons', isset($message_icon_sprite[$topic['first_post']['icon']]) ? ' topicicon img_' . $topic['first_post']['icon'] : '', '">';
+									<p class="topic_icons', isset($message_icon_sprite[$topic['first_post']['icon']]) ? ' topicicon i-' . $topic['first_post']['icon'] : '', '">';
 
 							if (!isset($message_icon_sprite[$topic['first_post']['icon']]))
 								echo '
@@ -142,27 +140,39 @@ function template_unread()
 										</h4>
 									</div>
 									<div class="topic_starter">
-										', sprintf($txt['topic_started_by_in'], $topic['first_post']['member']['link'], '<em>' . $topic['board']['link'] . '</em>'), !empty($topic['pages']) ? '
-										<ul class="small_pagelinks" id="pages' . $topic['first_post']['id'] . '" role="menubar">' . $topic['pages'] . '</ul>' : '', '
+										', sprintf($txt['topic_started_by_in'], $topic['first_post']['member']['link'], '<em>' . $topic['board']['link'] . '</em>'), '
 									</div>
 								</div>
-								<div class="topic_latest">
-									<p class="topic_stats">
-										', $topic['replies'], ' ', $txt['replies'], '
-										<br />
-										', $topic['views'], ' ', $txt['views'], '
-									</p>
-									<p class="topic_lastpost">
-										<a class="topicicon img_last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
+								<aside class="topic_latest">
+									<dl class="topic_stats">
+										<dt>', $txt['replies'], ':</dt>
+										<dd>', $topic['replies'], '</dd>
+										<dt>', $txt['views'], ':</dt>
+										<dd>', $topic['views'], '</dd>';
+
+			// Show likes?
+			if (!empty($modSettings['likes_enabled']))
+				echo '
+										<dt>', $txt['likes'], ':</dt>
+										<dd>', $topic['likes'], '</dd>';
+
+			echo '
+									</dl>
+									<div class="topic_lastpost">';
+
+			echo '
 										', $topic['last_post']['html_time'], '<br />
-										', $txt['by'], ' ', $topic['last_post']['member']['link'], '
-									</p>
-								</div>';
+										', $txt['by'], ' ', $topic['last_post']['member']['link'], '<br />',
+										(!empty($topic['pages']) ? '
+										<ul class="small_pagelinks" id="pages' . $topic['first_post']['id'] . '" role="menubar">' . $topic['pages'] . '</ul>' : ''), '
+										<a class="topicicon i-last_post href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
+									</div>
+								</aside>';
 
 			if ($context['showCheckboxes'])
 				echo '
-								<p class="topic_moderation" >
-									<input type="checkbox" name="topics[]" value="', $topic['id'], '" class="input_check" />
+								<p class="topic_moderation">
+									<input type="checkbox" name="topics[]" value="', $topic['id'], '" />
 								</p>';
 
 			echo '
@@ -232,7 +242,7 @@ function template_replies()
 		if ($context['showCheckboxes'])
 			echo '
 						<li class="quickmod_select_all">
-							<input type="checkbox" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" class="input_check" />
+							<input type="checkbox" onclick="invertAll(this, document.getElementById(\'quickModForm\'), \'topics[]\');" />
 						</li>';
 
 		echo '		</ul>
@@ -257,7 +267,7 @@ function template_replies()
 			echo '
 							<li class="', $color_class, '">
 								<div class="topic_info">
-									<p class="topic_icons', isset($message_icon_sprite[$topic['first_post']['icon']]) ? ' topicicon img_' . $topic['first_post']['icon'] : '', '">';
+									<p class="topic_icons', isset($message_icon_sprite[$topic['first_post']['icon']]) ? ' topicicon i-' . $topic['first_post']['icon'] : '', '">';
 
 							if (!isset($message_icon_sprite[$topic['first_post']['icon']]))
 								echo '
@@ -286,7 +296,7 @@ function template_replies()
 										', $topic['views'], ' ', $txt['views'], '
 									</p>
 									<p class="topic_lastpost">
-										<a class="topicicon img_last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
+										<a class="topicicon i-last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
 										', $topic['last_post']['html_time'], '<br />
 										', $txt['by'], ' ', $topic['last_post']['member']['link'], '
 									</p>
@@ -295,7 +305,7 @@ function template_replies()
 			if ($context['showCheckboxes'])
 				echo '
 								<p class="topic_moderation">
-									<input type="checkbox" name="topics[]" value="', $topic['id'], '" class="input_check" />
+									<input type="checkbox" name="topics[]" value="', $topic['id'], '" />
 								</p>';
 
 			echo '
@@ -336,9 +346,9 @@ function template_replies_below()
 
 		if (!empty($context['using_relative_time']))
 			echo '
-			<script><!-- // --><![CDATA[
+			<script>
 				$(\'.topic_latest\').addClass(\'relative\');
-			// ]]></script>';
+			</script>';
 
 		echo '
 		</div>';
@@ -360,12 +370,11 @@ function template_unread_below()
 
 		if (!empty($context['using_relative_time']))
 			echo '
-			<script><!-- // --><![CDATA[
+			<script>
 				$(\'.topic_latest\').addClass(\'relative\');
-			// ]]></script>';
+			</script>';
 
 		echo '
 		</div>';
 	}
-
 }

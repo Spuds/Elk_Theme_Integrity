@@ -170,7 +170,6 @@ strong {
 	color: #686868;
 }
 
-/* @todo - Test this everywhere. */
 .content {
 	background: #F6F6F6;
 	box-shadow: 1px 2px 4px #EBEBEB;
@@ -1309,7 +1308,7 @@ div.bbc_footnotes .meaction {
 }
 
 /* Poster and postarea + moderation area underneath */
-.forumposts {
+.forumposts, .core_posts {
 	border-color: #C5C5C5;
 	border-bottom-color: #CCCCCC;
 	background: #FEFEFE;
@@ -1645,6 +1644,10 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 .topic_details {
 	border-bottom-color: #999999;
+}
+
+.fred {
+	border-color: #990100;
 }
 
 .ignoreboards a {
