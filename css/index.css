@@ -6948,7 +6948,7 @@ a > i {
 	}
 
 	#menu_nav {
-		padding: 6px 0;
+		padding: 6px 0 8px 0;
 	}
 
 	.new_posts, .require_approval {
@@ -7059,7 +7059,7 @@ a > i {
 	}
 
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover {
-		border: 1px solid;
+		border: none;
 	}
 
 	#collapse_button {

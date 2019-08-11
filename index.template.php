@@ -678,9 +678,9 @@ function template_menu()
 	foreach ($context['menu_buttons'] as $act => $button)
 	{
 		echo '
-						<li id="button_', $act, '" class="listlevel1', !empty($button['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', ' role="menuitem">
-							<a ', (!empty($button['data-icon']) ? 'data-icon="' . $button['data-icon'] . '" ' : ''), 'class="linklevel1', !empty($button['active_button']) ? ' active' : '', (!empty($button['indicator']) ? ' indicator' : '' ), '" href="', $button['href'], '" ', isset($button['target']) ? 'target="' . $button['target'] . '"' : '', '>
-								<span class="button_title">', $button['title'], '</span>
+						<li id="button_', $act, '" class="listlevel1', !empty($button['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', '>
+							<a class="linklevel1', !empty($button['active_button']) ? ' active' : '', (!empty($button['indicator']) ? ' indicator' : ''), '" href="', $button['href'], '" ', isset($button['target']) ? 'target="' . $button['target'] . '"' : '', '>', (!empty($button['data-icon']) ? '<i class="icon icon-menu icon-lg ' . $button['data-icon'] . '" title="' . (!empty($button['alttitle']) ? $button['alttitle'] : $button['title']) . '"></i> ' : ''), '
+								<span class="button_title" aria-hidden="true">', $button['title'], '</span>
 							</a>';
 
 		// Any 2nd level menus?
