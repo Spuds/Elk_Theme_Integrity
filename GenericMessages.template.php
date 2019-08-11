@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.0.6
+ * @version 1.1.4
  *
  */
 
@@ -37,9 +35,7 @@ function template_build_poster_div($message, $ignoring = false)
 	{
 		$poster_div .= ' 		
  							<div class="poster_avatar">
-								<a class="linklevel1" ' . (!empty($message['member']['id'])
-									? 'href="' . $scripturl . '?action=profile;u=' . $message['member']['id'] . '"'
-									: '') . '>
+ 								<a class="linklevel1" href="' . $message['member']['href'] . '">
 									<span class="poster_area_avatar">' . $message['member']['avatar']['image'] . '</span>
 								</a>
 							</div>';
@@ -48,7 +44,7 @@ function template_build_poster_div($message, $ignoring = false)
 	{
 		if (!empty($message['member']['id']))
 			$poster_div .= '
-								<a class="linklevel1 name" href="' . $scripturl . '?action=profile;u=' . $message['member']['id'] . '">
+								<a class="linklevel1 name" href="' . $message['member']['href'] . '">
 									' . $message['member']['name'] . '
 								</a>';
 		else
@@ -82,7 +78,7 @@ function template_build_poster_div($message, $ignoring = false)
 									<li class="listlevel2"><strong>' . $message['member']['name'] . '</strong></li>';
 
 		$poster_div .= '
-									<li class="listlevel2">Member Since: ' . standardTime($message['member']['registered_timestamp'], '%b-%d %Y') . '</li>
+									<li class="listlevel2">' . $txt['date_joined'] . ': ' . standardTime($message['member']['registered_raw'], $txt['date_joined_format']) . '</li>
 									<li class="listlevel2">Last Seen: ' . $message['member']['last_login'] . '</li>';
 
 		// Is karma display enabled?  Total or +/-?
@@ -99,7 +95,7 @@ function template_build_poster_div($message, $ignoring = false)
 				$poster_div .= '
 									<span class="karma_allow">&nbsp;
 										<a class="linkbutton" href="' . $message['member']['karma']['applaud_url'] . '">' . $modSettings['karmaApplaudLabel'] . '</a>' .
-										(empty($modSettings['karmaDisableSmite']) ? '&nbsp;<a class="linkbutton" href="' . $message['member']['karma']['smite_url'] . '">' . $modSettings['karmaSmiteLabel'] . '</a>' : '') . '
+					(empty($modSettings['karmaDisableSmite']) ? '&nbsp;<a class="linkbutton" href="' . $message['member']['karma']['smite_url'] . '">' . $modSettings['karmaSmiteLabel'] . '</a>' : '') . '
 									</span>';
 
 			$poster_div .= '</li>';
@@ -133,7 +129,7 @@ function template_build_poster_div($message, $ignoring = false)
 				}
 
 				$poster_div .= '
-											<li>' . $custom['value'] . '</li>';
+											<li class="cf_icon">' . $custom['value'] . '</li>';
 			}
 
 			if ($shown)
@@ -152,12 +148,12 @@ function template_build_poster_div($message, $ignoring = false)
 			// Don't show an icon if they haven't specified a website.
 			if ($message['member']['website']['url'] != '' && !isset($context['disabled_fields']['website']))
 				$poster_div .= '
-											<li>
+											<li class="cf_icon">
 												<a href="' . $message['member']['website']['url'] . '" title="' . $message['member']['website']['title'] . '" target="_blank" class="new_win">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/www_sm.png" alt="' . $message['member']['website']['title'] . '" />' : $txt['www']) . '</a>
 											</li>';
 
 			// Don't show the email address if they want it hidden.
-			if (in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')) && $context['can_send_email'])
+			if ($context['can_send_email'])
 				$poster_div .= '
 											<li>
 												<a href="' . $scripturl . '?action=emailuser;sa=email;msg=' . $message['id'] . '" rel="nofollow">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/email_sm.png" alt="' . $txt['email'] . '" title="' . $txt['email'] . '" />' : $txt['email']) . '</a>
@@ -180,7 +176,7 @@ function template_build_poster_div($message, $ignoring = false)
 		}
 	}
 	// Otherwise, show the guest's email.
-	elseif (!empty($message['member']['email']) && in_array($message['member']['show_email'], array('yes', 'yes_permission_override', 'no_through_forum')) && $context['can_send_email'])
+	elseif (!empty($message['member']['email']) && $context['can_send_email'])
 		$poster_div .= '
 									<li class="listlevel2 email">
 										<a class="linklevel2" href="' . $scripturl . '?action=emailuser;sa=email;msg=' . $message['id'] . '" rel="nofollow">' . ($settings['use_image_buttons'] ? '<img src="' . $settings['images_url'] . '/profile/email_sm.png" alt="' . $txt['email'] . '" title="' . $txt['email'] . '" />' : $txt['email']) . '</a>
@@ -210,20 +206,21 @@ function template_build_poster_div($message, $ignoring = false)
 	if (!empty($context['can_moderate_forum']) && !empty($message['member']['ip']))
 		$poster_div .= '
 									<li class="listlevel2 poster_ip">
-										<a class="linklevel2 help" href="' . $scripturl . '?action=' . (!empty($message['member']['is_guest']) ? 'trackip' : 'profile;area=history;sa=ip;u=' . $message['member']['id'] . ';searchip=' . $message['member']['ip']) . '"><img src="' . $settings['images_url'] . '/ip.png" alt="" /> ' . $message['member']['ip'] . '</a>
-										<a class="linklevel2 help" href="' . $scripturl . '?action=quickhelp;help=see_admin_ip" onclick="return reqOverlayDiv(this.href);"><img src="' . $settings['images_url'] . '/helptopics.png" alt="(?)" /></a>
+										<a class="linklevel2 help" title="' . $message['member']['ip'] . '" href="' . $scripturl . '?action=' . (!empty($message['member']['is_guest']) ? 'trackip' : 'profile;area=history;sa=ip;u=' . $message['member']['id'] . ';searchip=' . $message['member']['ip']) . '">' . $message['member']['ip'] . '</a>
+										<a class="helpicon i-help" href="' . $scripturl . '?action=quickhelp;help=see_admin_ip" onclick="return reqOverlayDiv(this.href);"></a>
 									</li>';
 	// Or, should we show it because this is you?
 	elseif ($message['can_see_ip'] && !empty($message['member']['ip']))
 		$poster_div .= '
 									<li class="listlevel2 poster_ip">
-										<a class="linklevel2 help" href="' . $scripturl . '?action=quickhelp;help=see_member_ip" onclick="return reqOverlayDiv(this.href);"><img src="' . $settings['images_url'] . '/ip.png" alt="" /> ' . $message['member']['ip'] . '</a>
+										<a class="linklevel2 help" title="' . $message['member']['ip'] . '" href="#" onclick="return false;">' . $message['member']['ip'] . '</a>
+										<a class="linklevel2 helpicon i-help"  title="' . $message['member']['ip'] . '" href="' . $scripturl . '?action=quickhelp;help=see_member_ip" onclick="return reqOverlayDiv(this.href);"><s>' . $txt['help'] . '</s></a>
 									</li>';
 	// Okay, are you at least logged in?  Then we can show something about why IPs are logged...
 	elseif (!$context['user']['is_guest'])
 		$poster_div .= '
 									<li class="listlevel2 poster_ip">
-										<a class="linklevel2 help" href="' . $scripturl . '?action=quickhelp;help=see_member_ip" onclick="return reqOverlayDiv(this.href);">' . $txt['logged'] . '</a>
+										<a class="linklevel2 helpicon i-help" href="' . $scripturl . '?action=quickhelp;help=see_member_ip" onclick="return reqOverlayDiv(this.href);"><s>' . $txt['help'] . '</s></a>' . $txt['logged'] . '
 									</li>';
 	// Otherwise, you see NOTHING!
 	else
@@ -232,7 +229,7 @@ function template_build_poster_div($message, $ignoring = false)
 
 	// Done with the detail flyout information about the poster.
 	if (!$message['member']['is_guest'])
-	$poster_div .= '
+		$poster_div .= '
 
 								</ul>
 							</div>
@@ -369,21 +366,21 @@ function template_simple_message($msg)
 {
 	// @todo find a better name for $msg['date']
 	echo '
-			<div class="', $msg['class'], ' core_posts">', !empty($msg['counter']) ? '
+			<article class="', $msg['class'], ' core_posts">', !empty($msg['counter']) ? '
 				<div class="counter">' . $msg['counter'] . '</div>' : '', '
-				<div class="topic_details">
+				<header class="topic_details">
 					<h5>
 						', $msg['title'], '
 					</h5>', !empty($msg['date']) ? '
 					<span class="smalltext">' . $msg['date'] . '</span>' : '', '
-				</div>
-				<div class="inner">
+				</header>
+				<section class="inner">
 					', $msg['body'], '
-				</div>';
+				</section>';
 
 	if (!empty($msg['buttons']))
 		template_quickbutton_strip($msg['buttons'], !empty($msg['tests']) ? $msg['tests'] : array());
 
 	echo '
-			</div>';
+			</article>';
 }

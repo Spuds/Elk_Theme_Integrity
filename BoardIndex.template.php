@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
+ * This file contains code covered by:
+ * copyright: 2011 Simple Machines (http://www.simplemachines.org)
+ * license: BSD, See included LICENSE.TXT for terms and conditions.
  *
- * Simple Machines Forum (SMF)
- * copyright:	2011 Simple Machines (http://www.simplemachines.org)
- * license:  	BSD, See included LICENSE.TXT for terms and conditions.
- *
- * @version 1.0.3
+ * @version 1.1.4
  *
  */
 
@@ -42,7 +40,9 @@ function template_boards_list()
 	{
 		// If there are no parent boards we can see, avoid showing an empty category (unless its collapsed).
 		if (empty($category['boards']) && !$category['is_collapsed'])
+		{
 			continue;
+		}
 
 		echo '
 				<section class="forum_category" id="category_', $category['id'], '">
@@ -50,8 +50,10 @@ function template_boards_list()
 
 		// If this category even can collapse, show a link to collapse it.
 		if ($category['can_collapse'])
+		{
 			echo '
-						<a class="collapse" href="', $category['collapse_href'], '" title="', $category['is_collapsed'] ? $txt['show'] : $txt['hide'], '">', $category['collapse_image'], '</a>';
+						<a class="chevricon i-chevron-', $category['is_collapsed'] ? 'down' : 'up', '" href="', $category['collapse_href'], '" title="', $category['is_collapsed'] ? $txt['show'] : $txt['hide'], '"></a>';
+		}
 
 		// The "category link" is only a link for logged in members. Guests just get the name.
 		echo '
@@ -60,7 +62,9 @@ function template_boards_list()
 
 		// Assuming the category hasn't been collapsed...
 		if (!$category['is_collapsed'])
-					template_list_boards($category['boards'], 'category_' . $category['id'] . '_boards');
+		{
+			template_list_boards($category['boards'], 'category_' . $category['id'] . '_boards');
+		}
 
 		echo '
 				</section>';
@@ -68,21 +72,25 @@ function template_boards_list()
 
 	// The key line, new posts, no new posts, etc
 	echo '
-		<div id="posting_icons">';
+		<aside id="posting_icons">';
 
 	// Show the mark all as read button?
 	if ($settings['show_mark_read'] && !$context['user']['is_guest'] && !empty($context['categories']))
+	{
 		echo '
 			', template_button_strip($context['mark_read_button'], 'right');
+	}
 
 	if ($context['user']['is_logged'])
+	{
 		echo '
 			<p class="board_key new_some_board" title="', $txt['new_posts'], '">', $txt['new_posts'], '</p>';
+	}
 
 	echo '
 			<p class="board_key new_none_board" title="', $txt['old_posts'], '">', $txt['old_posts'], '</p>
 			<p class="board_key new_redirect_board" title="', $txt['redirect_board'], '">', $txt['redirect_board'], '</p>
-		</div>';
+		</aside>';
 
 	// All done
 	echo '
@@ -99,11 +107,13 @@ function template_boardindex_outer_above()
 
 	// Show some statistics if info centre stats is off.
 	if (!$settings['show_stats_index'])
+	{
 		echo '
 		<div id="index_common_stats">
 			', $txt['members'], ': ', $context['common_stats']['total_members'], ' &nbsp;&#8226;&nbsp; ', $txt['posts_made'], ': ', $context['common_stats']['total_posts'], ' &nbsp;&#8226;&nbsp; ', $txt['topics_made'], ': ', $context['common_stats']['total_topics'], '<br />
 			', $settings['show_latest_member'] ? ' ' . sprintf($txt['welcome_newest_member'], ' <strong>' . $context['common_stats']['latest_member']['link'] . '</strong>') : '', '
 		</div>';
+	}
 }
 
 /**
@@ -114,7 +124,9 @@ function template_boardindex_outer_below()
 	global $context;
 
 	if (!empty($context['info_center_callbacks']))
+	{
 		template_info_center();
+	}
 }
 
 /**
@@ -210,7 +222,9 @@ function template_ic_show_events()
 	global $context, $txt, $scripturl, $settings;
 
 	if (empty($context['calendar_holidays']) && empty($context['calendar_birthdays']) && empty($context['calendar_events']))
+	{
 		return;
+	}
 
 	echo '
 			<li class="board_row">
@@ -222,10 +236,12 @@ function template_ic_show_events()
 
 	// Holidays like "Christmas", "Hanukkah", and "We Love [Unknown] Day" :P.
 	if (!empty($context['calendar_holidays']))
+	{
 		echo '
 					<li>', $txt['calendar_prompt'], '
 						<p class="holiday smalltext"> ', implode(', ', $context['calendar_holidays']), '</p>
 					</li>';
+	}
 
 	// People's birthdays. Like mine. And yours, I guess. Kidding.
 	if (!empty($context['calendar_birthdays']))
@@ -237,8 +253,10 @@ function template_ic_show_events()
 
 		// Each member in calendar_birthdays has: id, name (person), age (if they have one set?), is_last. (last in list?), and is_today (birthday is today?)
 		foreach ($context['calendar_birthdays'] as $member)
+		{
 			echo '
 					<a href="', $scripturl, '?action=profile;u=', $member['id'], '">', $member['is_today'] ? '<strong class="fix_rtl_names">' : '', $member['name'], $member['is_today'] ? '</strong>' : '', isset($member['age']) ? ' (' . $member['age'] . ')' : '', '</a>', $member['is_last'] ? '' : ', ';
+		}
 
 		echo '
 						</p>
@@ -257,8 +275,10 @@ function template_ic_show_events()
 		// Each event in calendar_events should have:
 		// title, href, is_last, can_edit (are they allowed?), modify_href, and is_today.
 		foreach ($context['calendar_events'] as $event)
+		{
 			echo '
 						', $event['can_edit'] ? '<a href="' . $event['modify_href'] . '" title="' . $txt['calendar_edit'] . '"><img src="' . $settings['images_url'] . '/icons/calendar_modify.png" alt="*" class="centericon" /></a> ' : '', $event['href'] == '' ? '' : '<a href="' . $event['href'] . '">', $event['is_today'] ? '<strong>' . $event['title'] . '</strong>' : $event['title'], $event['href'] == '' ? '' : '</a>', $event['is_last'] ? '<br />' : ', ';
+		}
 
 		echo '
 						</p>
@@ -287,8 +307,8 @@ function template_ic_show_stats()
 					<li>', $txt['total_posts'], ': ', $context['common_stats']['total_posts'], '</li>
 					<li>', $txt['total_topics'], ': ', $context['common_stats']['total_topics'], '</li>
 					<li>', $txt['total_members'], ': ', $context['common_stats']['total_members'], '</li>',
-					!empty($settings['show_latest_member']) ? '<li>' . $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong></li>' : '',
-					'<li>', $txt['most_online_today'], ': ', comma_format($modSettings['mostOnlineToday']), '</li>
+	!empty($settings['show_latest_member']) ? '<li>' . $txt['latest_member'] . ': <strong> ' . $context['common_stats']['latest_member']['link'] . '</strong></li>' : '',
+	'<li>', $txt['most_online_today'], ': ', comma_format($modSettings['mostOnlineToday']), '</li>
 					<li>', (!empty($context['latest_post']) ? $txt['latest_post'] . ': <strong>&quot;' . $context['latest_post']['link'] . '&quot;<br /></strong><i class="fa fa-clock-o"></i> <span class="smalltext">' . $context['latest_post']['time'] . '</span>' : ''), '<br />
 					<a class="linkbutton" href="', $scripturl, '?action=recent">', $txt['recent_view'], '</a></li>
 				</ul>
@@ -317,17 +337,25 @@ function template_ic_show_users()
 	// Handle hidden users and buddies.
 	$bracketList = array();
 	if ($context['show_buddies'])
+	{
 		$bracketList[] = comma_format($context['num_buddies']) . ' ' . ($context['num_buddies'] == 1 ? $txt['buddy'] : $txt['buddies']);
+	}
 
 	if (!empty($context['num_spiders']))
+	{
 		$bracketList[] = comma_format($context['num_spiders']) . ' ' . ($context['num_spiders'] == 1 ? $txt['spider'] : $txt['spiders']);
+	}
 
 	if (!empty($context['num_users_hidden']))
+	{
 		$bracketList[] = comma_format($context['num_users_hidden']) . ' ' . ($context['num_users_hidden'] == 1 ? $txt['hidden'] : $txt['hidden_s']);
+	}
 
 	if (!empty($bracketList))
+	{
 		echo '
 					<li>(' . implode(', ', $bracketList) . ')</li>';
+	}
 
 	echo '
 				</ul>';
@@ -340,8 +368,10 @@ function template_ic_show_users()
 
 		// Showing membergroups?
 		if (!empty($settings['show_group_key']) && !empty($context['membergroups']))
+		{
 			echo '
 				<p class="inline membergroups">[' . implode(',&nbsp;', $context['membergroups']) . ']</p>';
+		}
 	}
 	echo '
 			</li>';
