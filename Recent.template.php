@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1
+ * @version 1.1.7
  *
  */
 
@@ -61,8 +61,6 @@ function template_recent()
 function template_unread()
 {
 	global $context, $txt, $scripturl, $modSettings;
-
-	$message_icon_sprite = array('clip' => '', 'lamp' => '', 'poll' => '', 'question' => '', 'xx' => '', 'moved' => '', 'exclamation' => '', 'thumbup' => '', 'thumbdown' => '');
 
 	if (!empty($context['topics']))
 	{
@@ -125,9 +123,9 @@ function template_unread()
 			echo '
 							<li class="', $color_class, '">
 								<div class="topic_info">
-									<p class="topic_icons', isset($message_icon_sprite[$topic['first_post']['icon']]) ? ' topicicon i-' . $topic['first_post']['icon'] : '', '">';
+									<p class="topic_icons', empty($modSettings['messageIcons_enable']) ? ' topicicon i-' . $topic['first_post']['icon'] : '', '">';
 
-							if (!isset($message_icon_sprite[$topic['first_post']['icon']]))
+							if (!empty($modSettings['messageIcons_enable']))
 								echo '
 										<img src="', $topic['first_post']['icon_url'], '" alt="" />';
 

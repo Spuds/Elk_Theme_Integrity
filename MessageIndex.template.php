@@ -11,7 +11,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.4
+ * @version 1.1.7
  *
  */
 
@@ -126,7 +126,6 @@ function template_topic_listing()
 	if (!$context['no_topic_listing'])
 	{
 		// We know how to sprite these
-		$message_icon_sprite = array('clip' => '', 'lamp' => '', 'poll' => '', 'question' => '', 'xx' => '', 'moved' => '', 'exclamation' => '', 'thumbup' => '', 'thumbdown' => '');
 		$minmax_key = 'bid_' . $context['current_board'];
 
 		// If Quick Moderation is enabled start the form.
@@ -273,7 +272,7 @@ function template_topic_listing()
 							<span class="preview" title="', $topic['default_preview'], '">';
 
 			// Show the topic icon, use the sprite if we can
-			if (isset($message_icon_sprite[$topic['first_post']['icon']]))
+			if (empty($modSettings['messageIcons_enable']))
 				echo '
 								<span class="topicicon i-', $topic['first_post']['icon'], '"></span>';
 			else

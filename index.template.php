@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.4
+ * @version 1.1.7
  *
  */
 
@@ -60,11 +60,6 @@ function template_init()
 		// The version this template/theme is for. This should probably be the version of the forum it was created for.
 		'theme_version' => '1.1',
 
-		// Use plain buttons - as opposed to text buttons?
-		'use_buttons' => true,
-
-		// Show sticky and lock status separate from topic icons?
-		'separate_sticky_lock' => true,
 
 		// Set the following variable to true if this theme requires the optional theme strings file to be loaded.
 		'require_theme_strings' => false,
@@ -99,11 +94,11 @@ function template_init()
 		// How do we get anchors only, where they will work? Spans and strong only where necessary?
 		'page_index_template' => array(
 			'base_link' => '<li class="linavPages"><a class="navPages" href="{base_link}" role="menuitem">%2$s</a></li>',
-			'previous_page' => '<span class="previous_page" role="menuitem">{prev_txt}</span>',
+			'previous_page' => '<span class="previous_page">{prev_txt}</span>',
 			'current_page' => '<li class="linavPages"><strong class="current_page" role="menuitem">%1$s</strong></li>',
-			'next_page' => '<span class="next_page" role="menuitem">{next_txt}</span>',
+			'next_page' => '<span class="next_page">{next_txt}</span>',
 			'expand_pages' => '<li class="linavPages expand_pages" role="menuitem" {custom}> <a href="#">...</a> </li>',
-			'all' => '<span class="linavPages all_pages" role="menuitem">{all_txt}</span>',
+			'all' => '<span class="linavPages all_pages">{all_txt}</span>',
 		),
 
 		// @todo find a better place if we are going to create a notifications template
@@ -315,9 +310,6 @@ function template_body_above()
 		<nav id="menu_nav">';
 
 	call_template_callbacks('th', $context['theme_header_callbacks']);
-
-	if (!empty($context['show_login_bar']))
-		template_th_login_bar();
 
 	template_menu();
 
@@ -692,7 +684,7 @@ function template_menu()
 			foreach ($button['sub_buttons'] as $childact => $childbutton)
 			{
 				echo '
-								<li id="button_', $childact, '" class="listlevel2', !empty($childbutton['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', ' role="menuitem">
+								<li id="button_', $childact, '" class="listlevel2', !empty($childbutton['sub_buttons']) ? ' subsections" aria-haspopup="true"' : '"', '>
 									<a class="linklevel2" href="', $childbutton['href'], '" ', isset($childbutton['target']) ? 'target="' . $childbutton['target'] . '"' : '', '>', $childbutton['title'], '</a>';
 
 				// 3rd level menus :)
@@ -703,7 +695,7 @@ function template_menu()
 
 					foreach ($childbutton['sub_buttons'] as $grandchildact => $grandchildbutton)
 						echo '
-										<li id="button_', $grandchildact, '" class="listlevel3" role="menuitem">
+										<li id="button_', $grandchildact, '" class="listlevel3">
 											<a class="linklevel3" href="', $grandchildbutton['href'], '" ', isset($grandchildbutton['target']) ? 'target="' . $grandchildbutton['target'] . '"' : '', '>', $grandchildbutton['title'], '</a>
 										</li>';
 

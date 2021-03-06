@@ -193,6 +193,15 @@ function template_settings()
 		),
 	'',
 		array(
+			'id' => 'recent_post_topics',
+			'label' => $txt['recent_post_topics'],
+			'options' => array(
+				0 => $txt['show_recent_posts'],
+				1 => $txt['show_recent_topics'],
+			),
+			'type' => 'number',
+		),
+		array(
 			'id' => 'number_recent_posts',
 			'label' => $txt['number_recent_posts'],
 			'description' => $txt['number_recent_posts_desc'],
@@ -249,7 +258,7 @@ function template_settings()
 		// Hide the option first
 		$("#dt_newsfader_time, #dd_newsfader_time").hide();
 
-		// Update visablity based on the select value
+		// Update visibility based on the select value
 		toggleNewsFaderTime($("#enable_news").val());
 
 		// Set up the onchange event

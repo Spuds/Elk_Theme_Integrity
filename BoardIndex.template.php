@@ -200,7 +200,7 @@ function template_ic_recent_posts()
 							', $user_profile[$post['poster']['id']]['avatar']['image'], '
 						</div>
 						<div>
-							<p>', $post['poster']['link'], $post['link'], '</p>
+							<p>', $post['poster']['link'], ' ', $post['link'], '</p>
 							<p>', $post['html_time'], '</p>
 						</div>
 					</li>';
