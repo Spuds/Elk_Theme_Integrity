@@ -5,13 +5,11 @@
  * @copyright ElkArte Forum contributors
  * @license   BSD http://opensource.org/licenses/BSD-3-Clause
  *
- * This software is a derived product, based on:
- *
- * Simple Machines Forum (SMF)
+ * This file contains code covered by:
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.7
+ * @version 1.1.9
  *
  */
 
@@ -125,7 +123,6 @@ function template_topic_listing()
 
 	if (!$context['no_topic_listing'])
 	{
-		// We know how to sprite these
 		$minmax_key = 'bid_' . $context['current_board'];
 
 		// If Quick Moderation is enabled start the form.
@@ -241,7 +238,7 @@ function template_topic_listing()
 					echo '
 					<div class="board_avatar', ($topic['is_posted_in'] ? ' fred' : ''), '">
 						<a href="', $topic['last_post']['member']['href'], '">
-							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" />
+							<img class="avatar" src="', $topic['last_post']['member']['avatar']['href'], '" alt="" loading="lazy" />
 						</a>
 					</div>';
 				}
@@ -311,7 +308,7 @@ function template_topic_listing()
 						', $txt['by'], ' ', $topic['last_post']['member']['link'], '<br />',
 						(!empty($topic['pages']) ? '
 						<ul class="small_pagelinks" id="pages' . $topic['first_post']['id'] . '" role="menubar">' . $topic['pages'] . '</ul>' : ''), '
-						<a class="topicicon i-last_post href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
+						<a class="topicicon i-last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
 					</div>
 				</aside>';
 
@@ -323,7 +320,7 @@ function template_topic_listing()
 
 				if ($options['display_quick_mod'] == 1)
 					echo '
-						<input type="checkbox" name="topics[]" value="', $topic['id'], '" class="input_check" />';
+						<input type="checkbox" name="topics[]" value="', $topic['id'], '" />';
 				else
 				{
 					// Check permissions on each and show only the ones they are allowed to use.
@@ -366,7 +363,7 @@ function template_topic_listing()
 			foreach ($context['qmod_actions'] as $qmod_action)
 				if ($context['can_' . $qmod_action])
 					echo '
-					<option value="' . $qmod_action . '">' . (isBrowser('ie8') ? '&#187;' : '&#10148;') . '&nbsp;', $txt['quick_mod_' . $qmod_action] . '</option>';
+					<option value="' . $qmod_action . '">&#10148;&nbsp;', $txt['quick_mod_' . $qmod_action] . '</option>';
 
 			echo '
 				</select>';
@@ -377,7 +374,7 @@ function template_topic_listing()
 				<span id="quick_mod_jump_to">&nbsp;</span>';
 
 			echo '
-				<input type="submit" value="', $txt['quick_mod_go'], '" onclick="return document.forms.quickModForm.qaction.value != \'\' &amp;&amp; confirm(\'', $txt['quickmod_confirm'], '\');" class="button_submit" />
+				<input type="submit" value="', $txt['quick_mod_go'], '" onclick="return document.forms.quickModForm.qaction.value != \'\' &amp;&amp; confirm(\'', $txt['quickmod_confirm'], '\');" />
 			</div>';
 		}
 
@@ -453,7 +450,7 @@ function template_topic_listing_below()
 					iCurBoardChildLevel: ', $context['jump_to']['child_level'], ',
 					sCurBoardName: "', $context['jump_to']['board_name'], '",
 					sBoardChildLevelIndicator: "&#8195;",
-					sBoardPrefix: "', isBrowser('ie8') ? '&#187; ' : '&#10148; ', '",
+					sBoardPrefix: "&#10148;",
 					sCatClass: "jump_to_header",
 					sCatPrefix: "",
 					bNoRedirect: true,
@@ -469,7 +466,7 @@ function template_topic_listing_below()
 					iCurBoardChildLevel: ', $context['jump_to']['child_level'], ',
 					sCurBoardName: "', $context['jump_to']['board_name'], '",
 					sBoardChildLevelIndicator: "&#8195;",
-					sBoardPrefix: "', isBrowser('ie8') ? '&#187; ' : '&#10148; ', '",
+					sBoardPrefix: "&#10148;",
 					sCatPrefix: "",
 					sCatClass: "jump_to_header",
 					sGoButtonLabel: "', $txt['quick_mod_go'], '"

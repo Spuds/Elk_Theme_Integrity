@@ -41,11 +41,14 @@
  *		$MEDIA...............Experimental media queries.
  */
 
+#upper_container {
+	background: #f6f8f9 url(../../images/upper.jpg) repeat 0 0;
+}
+
 /* -------------------------------------------------------
  *	$GENERAL
  * -------------------------------------------------------
  */
-
 /* Normal, standard links. */
 a, a:link, a:visited,
 /* Links that open in a new window. */
@@ -55,7 +58,6 @@ a.new_win:link, a.new_win:visited {
 
 /* Cursor declared here.Should not be required anywhere else. */
 a:hover, a.new_win:hover {
-
 }
 
 /* Stop white band under footer on short pages.
@@ -66,19 +68,19 @@ html {
 }
 
 body {
-	background: #F6F8F9;
 	color: #444444;
+	background: #F6F8F9;
 }
 
 fieldset {
-	background: transparent;
 	border-color: #CCCCCC;
+	background: transparent;
 	box-shadow: inset -1px -1px 3px #FEFEFE;
 }
 
 legend {
-	background: url(../../images/selected_open.png) no-repeat scroll left center transparent;
 	color: #333333;
+	background: url(../../images/selected_open.png) no-repeat scroll left center transparent;
 }
 
 .collapsed legend {
@@ -86,9 +88,9 @@ legend {
 }
 
 input, button, select, textarea, .editor {
+	color: #444444;
 	border-color: #CCCCCC;
 	background: #FAFAFA;
-	color: #444444;
 }
 
 input:hover, textarea:hover, button:hover, select:hover {
@@ -97,8 +99,8 @@ input:hover, textarea:hover, button:hover, select:hover {
 }
 
 textarea:hover, .editor:hover {
-	background: #FEFEFE;
 	color: #444444;
+	background: #FEFEFE;
 }
 
 input:focus, textarea:focus, button:focus, select:focus, .editor:focus {
@@ -120,24 +122,24 @@ input[type="submit"], .drop_area_fileselect_text, button[type="submit"], input[t
 /* Anchors styled to look like buttons. */
 /* These have standard body text size. Can be chained with smalltext class. */
 .linkbutton:link, .linkbutton_right:link, .linkbutton_left:link,
-.linkbutton:visited, .linkbutton_right:visited, .linkbutton_left:visited {
+.linkbutton:visited, .linkbutton_right:visited, .linkbutton_left:visited, .ila {
+	color: #585858;
 	border-color: #AFAFAF;
 	border-top-color: #CFCFCF;
 	border-left-color: #BFBFBF;
 	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
 	box-shadow: 1px 1px 2px #E5E5E5, 0 -1px 0 #E5E5E5 inset;
-	color: #585858;
 }
 
 /* Hover effects. */
 input[type="submit"]:hover, button[type="submit"]:hover, input[type="button"]:hover,
-.linkbutton:hover, .linkbutton_right:hover, .linkbutton_left:hover {
+.linkbutton:hover, .linkbutton_right:hover, .linkbutton_left:hover, .ila:hover {
+	color: #585858;
 	border-color: #CCCCCC;
 	border-top-color: #AFAFAF;
 	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
-	color: #585858;
 }
 
 /* Don't show disabled buttons as active on hover */
@@ -150,19 +152,20 @@ input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
 
 /* the new "button" */
 .new_posts, .new_posts:visited, .new_posts:link {
-	background: #D41745;
 	color: #FEFEFE;
+	background: #D41745;
 }
 
 /* approval indicator */
 .require_approval {
-	background: #27A348;
 	color: #FEFEFE;
+	background: #27A348;
 }
 
 /* Standard horizontal rule.. ([hr], etc.) */
 hr {
 	border-top-color: #BBBBBB;
+	border-bottom-color: #E4E4E4;
 	background: #EEEEEE;
 }
 
@@ -171,9 +174,9 @@ strong {
 }
 
 .content {
+	border-color: #CED2D8;
 	background: #F6F6F6;
 	box-shadow: 1px 2px 4px #EBEBEB;
-	border-color: #CED2D8;
 }
 
 /* Styles for main headers. */
@@ -187,7 +190,7 @@ strong {
 /* Single ones a bit darker than board index ones. */
 .category_header, .content_category .category_header {
 	color: #FAFAFA;
-	borde-color: transparent;
+	border-color: transparent;
 	background: #BB2222;
 	box-shadow: 2px 1px 0 #A2A2A2;
 }
@@ -212,13 +215,13 @@ strong {
  * Nicer than default. Needs two separate rules.
  */
 ::-moz-selection {
-	background: #D8FFDF;
 	color: #555555;
+	background: #D8FFDF;
 }
 
 ::selection {
-	background: #D8FFDF;
 	color: #555555;
+	background: #D8FFDF;
 }
 
 /* Other highlighted text, such as search results. */
@@ -270,7 +273,6 @@ strong {
 }
 
 .generic_list_wrapper .additional_row {
-
 }
 
 .generic_list_wrapper .title_bar {
@@ -297,20 +299,19 @@ strong {
 }
 
 .auto_suggest_item_hover {
-	background: #888888;
 	color: #EEEEEE;
+	background: #888888;
 }
 
 /* -------------------------------------------------------
  * $BBC
  * -------------------------------------------------------
  */
-
 /* The "Quote:" and "Code:" header parts... */
 .codeheader, .quoteheader {
+	color: #585858;
 	border-color: #CCCCCC;
 	background: #FEFEFE;
-	color: #585858;
 }
 
 .codeheader {
@@ -319,15 +320,19 @@ strong {
 
 /* [Select] link to copy code. */
 .codeoperation {
-
 }
 
 /* A quote, perhaps from another post. */
 .bbc_quote,
-/* A code block - maybe PHP ;) - shared styles. */
+	/* A code block - maybe PHP ;) - shared styles. */
 .bbc_code {
 	border-color: #CCCCCC;
 	background: #FEFEFE;
+}
+
+input[type=checkbox].quote-show-more {
+	background: linear-gradient(to bottom, transparent 0%, transparent 25%, #FEFEFE 100%);
+	box-shadow: 0 1px 0 1px #E4E4E4;
 }
 
 /* Extra quote styling */
@@ -344,26 +349,26 @@ strong {
 
 /* Styling for BBC tags */
 .bbc_link:link, .bbc_link:visited {
-	box-shadow: 0 -1px 0 #CEDCCB inset;
 	color: #555555;
+	box-shadow: 0 -1px 0 #CEDCCB inset;
 }
 
 .bbc_link:hover {
-	box-shadow: 0 -1px 0 #5BA048 inset;
 	color: #555555;
+	box-shadow: 0 -1px 0 #5BA048 inset;
 }
 
 /* Styling for tables inside posts */
 .inner > .bbc_table_container > .bbc_table td,
 .messageContent > .bbc_table_container > .bbc_table td {
-	border-bottom: 1px solid #ccc;
-	border-right: 1px solid #ccc;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #CCCCCC;
 }
 
 .inner > .bbc_table_container > .bbc_table th,
 .messageContent > .bbc_table_container > .bbc_table th {
-	border-bottom: 1px solid #bbb;
-	border-right: 1px solid #ccc;
+	border-right: 1px solid #CCCCCC;
+	border-bottom: 1px solid #BBBBBB;
 }
 
 .inner > .bbc_table_container > .bbc_table td:last-child,
@@ -379,11 +384,9 @@ strong {
 }
 
 .meaction:before {
-
 }
 
 .spoilerheader {
-
 }
 
 .spoiler {
@@ -404,19 +407,17 @@ sup.bbc_footnotes, sup.bbc_footnotes a {
 }
 
 div.bbc_footnotes .meaction {
-
 }
 
 /* -------------------------------------------------------
  *	$AJAX
  * -------------------------------------------------------
  */
-
 /* The "Loading" bar for quick edit, etc. */
 #ajax_in_progress, .ajax_infobar {
+	color: #555555;
 	border-bottom-color: #F6F6F6;
 	background: #FEFEFE;
-	color: #555555;
 }
 
 #ajax_in_progress a {
@@ -427,10 +428,8 @@ div.bbc_footnotes .meaction {
  *	$MAIN.
  * -------------------------------------------------------
  */
-
 /* The top bar. */
 #top_section {
-
 }
 
 /* Maintenance mode warning. */
@@ -443,7 +442,6 @@ div.bbc_footnotes .meaction {
 }
 
 #search_form .input_text {
-
 }
 
 #search_form input[type="submit"] {
@@ -451,19 +449,19 @@ div.bbc_footnotes .meaction {
 }
 
 #search_form select {
-	border-color: #AFAFAF;
 	opacity: 0.8;
+	border-color: #AFAFAF;
 }
 
 #search_form select:focus {
-	border-color: #999999;
 	opacity: 1;
+	border-color: #999999;
 }
 
 #search_form_button, #search_form_button_close {
+	color: #FFFFFF;
 	border-color: transparent;
 	background: transparent;
-	color: #FFFFFF;
 }
 
 #search_form_button:hover, #search_form_button_close:hover {
@@ -478,22 +476,19 @@ div.bbc_footnotes .meaction {
 
 /* News section. */
 #news {
-
 }
 
 #news > h2 {
-
 }
 
 #news > h2:after {
-
 }
 
 #news_line, #news {
+	color: #444444;
 	border-color: #CCCCCC;
 	background: #FEFEFE;
 	box-shadow: 1px 2px 3px #EEEEEE;
-	color: #444444;
 }
 
 /* Main forum area. */
@@ -517,8 +512,8 @@ div.bbc_footnotes .meaction {
 }
 
 #footer_section .rssfeeds {
-	background-color: white;
 	color: #FFA500;
+	background-color: white;
 	text-shadow: 1px 1px 0 #000000;
 }
 
@@ -528,8 +523,8 @@ div.bbc_footnotes .meaction {
 }
 
 #debug_logging {
-	background: #222222;
 	color: #BBBBBB;
+	background: #222222;
 }
 
 #debug_logging_wrapper {
@@ -537,16 +532,14 @@ div.bbc_footnotes .meaction {
 }
 
 .action_viewquery {
-	background: #222222;
 	color: #BBBBBB;
+	background: #222222;
 }
 
 .action_viewquery a {
-
 }
 
 .action_viewquery .explain {
-
 }
 
 .action_viewquery .explain th,
@@ -555,14 +548,12 @@ div.bbc_footnotes .meaction {
 }
 
 .action_viewquery .query {
-
 }
 
 /* -------------------------------------------------------
  *	$MENUS MAIN navigation area
  * -------------------------------------------------------
  */
-
 #menu_nav, #menu_nav_scroll {
 	background: #990100;
 }
@@ -682,9 +673,8 @@ div.bbc_footnotes .meaction {
  *	$MENUS
  * -------------------------------------------------------
  */
-
 /* Level 1 Menu bar: link or button. General styling, basically any menu that is not the top menu. */
-.linklevel1, .linklevel1:link, .linklevel1:visited {
+.linklevel1, .linklevel1:link, .linklevel1:visited, .quickbuttons .inline_mod_check {
 	color: #566E4B;
 	border-color: transparent;
 	border-bottom-color: #E5E5E5;
@@ -698,12 +688,12 @@ div.bbc_footnotes .meaction {
 .linklevel3:hover, .listlevel3:hover .linklevel3,
 #menu_sidebar .linklevel1:hover, #menu_sidebar .listlevel1:hover .linklevel1,
 #menu_current_area > strong > .linklevel1 {
+	color: #686868;
 	border-color: #C0C0C0;
 	border-top-color: #AFAFAF;
 	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
-	color: #686868;
 }
 
 .poster li.listlevel1:hover {
@@ -712,25 +702,24 @@ div.bbc_footnotes .meaction {
 }
 
 .poster li.poster_online:hover .linklevel1 {
+	color: #585858;
 	border-color: #CCCCCC;
 	border-top-color: #AFAFAF;
 	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
-	color: #585858;
 }
 
 .poster li.poster_online .nolink {
+	color: #566E4B;
 	border-color: #AFAFAF;
 	border-top-color: #CFCFCF;
 	border-left-color: #BFBFBF;
 	background: #F4F4F4 linear-gradient(to bottom, #FFFFFF, #E4E4E4);
 	box-shadow: 1px 1px 2px #E4E4E4;
-	color: #566E4B;
 }
 
 .poster li.poster_online .nolink img {
-
 }
 
 .poster li.subsections.listlevel1:hover .linklevel1 {
@@ -763,20 +752,16 @@ div.bbc_footnotes .meaction {
  * Comment these out if you don't want them.
  */
 .subsections:hover .linklevel1:after {
-
 }
 
 #main_menu .subsections:hover .linklevel1:after {
-
 }
 
 .admin_menu .subsections:hover .linklevel1:after {
-
 }
 
 /* Corrections for other menus. */
 .quickbuttons .subsections:hover .linklevel1:after {
-
 }
 
 .subsections:hover .name.linklevel1:after {
@@ -790,9 +775,9 @@ div.bbc_footnotes .meaction {
 .poster_avatar .linklevel1, .poster_avatar:hover .linklevel1,
 .poster_avatar .linklevel1:focus,
 .name.linklevel1, .name.linklevel1:hover, .name.linklevel1:focus {
+	color: #E8E8E8;
 	background: none;
 	box-shadow: none;
-	color: #E8E8E8;
 }
 
 .name.linklevel1:hover {
@@ -812,37 +797,31 @@ div.bbc_footnotes .meaction {
  * just in case someone tries to use this class elsewhere.
  */
 .pm_indicator, .likes_indicator {
-
 }
 
 .poster .pm_indicator {
-
 }
 
 #dropdown_menu_1 .pm_indicator {
-
 }
 
 .likes_indicator {
-
 }
 
 /* Levels 2 and 3 drop menus: link or button. */
 .linklevel2:link, .linklevel2:visited, .linklevel3:link, .linklevel3:visited {
-	border-color: transparent;
 	color: #444444;
+	border-color: transparent;
 }
 
 /* Admin menu icons. */
 .linklevel2 > img {
-
 }
 
 /* Level 2: subsection indicators. */
 .listlevel2.subsections .linklevel2:after,
 #menu_sidebar .subsections .linklevel1:after,
 #menu_sidebar .subsections:hover .linklevel1:after {
-
 }
 
 /* Level 2: dividers between admin/moderation, and pm/profile links. */
@@ -856,17 +835,15 @@ div.bbc_footnotes .meaction {
  */
 .linklevel2.chosen, .linklevel3.chosen,
 #menu_current_area .linklevel1 {
-
 }
 
 /* Styles for sidebar menus.
  * Cancel default backgrounds for sidebar.
  */
 #menu_sidebar .linklevel1 {
-
 }
-/* End sidebar flyout coding. */
 
+/* End sidebar flyout coding. */
 .poster_container {
 	box-shadow: 0 0 2px #CCCCCC;
 }
@@ -880,7 +857,6 @@ div.bbc_footnotes .meaction {
  *	$LINKTREE
  * -------------------------------------------------------
  */
-
 /* Wrapper/background. */
 .navigate_section {
 	border-color: #CCCCCC;
@@ -928,7 +904,6 @@ div.bbc_footnotes .meaction {
  * Declarations are amalgamated where styling is shared.
  * -------------------------------------------------------
  */
-
 /* Styles for the standard button lists.
 /* @todo - Save code by amalgamating common button background declarations. */
 .buttonlist li {
@@ -956,66 +931,56 @@ div.bbc_footnotes .meaction {
 }
 
 /* Cancel generic border-radius. */
-.quickbuttons .linklevel1 {
+.quickbuttons .linklevel1, .quickbuttons .inline_mod_check {
 	color: #585858;
 	border-color: #AFAFAF;
 	border-top-color: #BBBBBB;
 }
 
-.quickbuttons .inline_mod_check {
-}
-
 /* Radius left end of the first (Quote) button. */
 .linklevel1.quote_button {
-
 }
 
 /* Radius right end of the last button. */
 .linklevel1.post_options, .linklevel1.remove_button {
-
 }
 
 /* Single buttons get all corners rounded. */
 .follow_ups .linklevel1, #topic_summary .linklevel1 {
-
 }
 
 /* -------------------------------------------------------
  *	$PAGELINKS
  * -------------------------------------------------------
  */
-
 .selectbox, .pagelinks {
 	color: #585858;
 }
 
 .pagelinks .navPages {
+	color: #585858;
 	border-color: #AFAFAF;
 	border-top-color: #BBBBBB;
 	background-image: linear-gradient(to bottom, #FEFEFE 0%, #E4E4E4 100%);
-	color: #585858;
 }
 
 .pagelinks .navPages:hover, .pagelinks .current_page {
+	color: #585858;
 	border-color: #CCCCCC;
 	border-top-color: #AFAFAF;
 	border-left-color: #AFAFAF;
 	background: #F0F0F0;
 	box-shadow: 2px 1px 1px rgba(0, 0, 0, 0.07) inset;
-	color: #585858;
 }
 
 .pagelinks :first-child {
-
 }
 
 .pagelinks :last-child {
-
 }
 
 /* our buddies &laquo; &raquo; */
 .small_pagelinks:before {
-
 }
 
 .small_pagelinks:after {
@@ -1024,19 +989,18 @@ div.bbc_footnotes .meaction {
 
 /* Globally accessible top/bottom links. */
 #gotop, #gobottom {
+	opacity: 0.2;
+	color: #EEEEEE;
 	border-color: #222222;
 	background: #EEEEEE;
-	color: #EEEEEE;
-	opacity: 0.2;
 }
 
 #gobottom {
-
 }
 
 #gotop:hover, #gobottom:hover {
-	color: #444444;
 	opacity: 1;
+	color: #444444;
 }
 
 /* Skip navigation link. */
@@ -1049,17 +1013,16 @@ div.bbc_footnotes .meaction {
  *	$TABLES
  * -------------------------------------------------------
  */
-
 /* A general table class. */
 .table_grid {
 	border-color: #CED2D8;
 }
 
 .table_head > th {
+	color: #686868;
 	border-top-color: #CED2D8;
 	border-bottom-color: #CED2D8;
 	background: #FEFEFE;
-	color: #686868;
 }
 
 /* Basic cells. */
@@ -1080,8 +1043,8 @@ div.bbc_footnotes .meaction {
  * Used by JS to show a selected item. Still used in manage languages
  */
 .table_grid .standard_row.highlight2 {
-	background: #E4E4E4;
 	color: #585858;
+	background: #E4E4E4;
 }
 
 /* For Errors.template.php. */
@@ -1094,7 +1057,6 @@ div.bbc_footnotes .meaction {
  * $SETTINGS
  * -------------------------------------------------------
  */
-
 /* Lists - settings use these a lot. */
 .settings label {
 	color: #585858;
@@ -1109,7 +1071,6 @@ div.bbc_footnotes .meaction {
  *    .content_category for general divisions around the place.
  * All styled the same in default variant, but available for fun and games.
  */
-
 /* The board categories and newsfader - some shared styling. */
 .forum_category, .content_category {
 	background: #DEEDDA;
@@ -1126,11 +1087,9 @@ div.bbc_footnotes .meaction {
 }
 
 .board_row .parent_board {
-
 }
 
 .childboard_row {
-
 }
 
 .board_latest {
@@ -1249,10 +1208,6 @@ div.bbc_footnotes .meaction {
 	background-color: #5F5F5F;
 }
 
-.qaction_row {
-	background: #FEFEFE;
-}
-
 .approvetopic_row, .approve_row {
 	background: #FFF5CD;
 }
@@ -1270,21 +1225,20 @@ div.bbc_footnotes .meaction {
 }
 
 .jump_to_header {
+	color: #566450;
 	background: #EBEBEB linear-gradient(to bottom, #FAFAFA, #EAEAEA);
 	box-shadow: 2px 1px rgba(1, 1, 1, 0.07) inset;
-	color: #566450;
 }
 
 .jump_to_header:hover {
-	background: #F0F0F0;
 	color: #585858;
+	background: #F0F0F0;
 }
 
 /* -------------------------------------------------------
  *	$TOPICS
  * -------------------------------------------------------
  */
-
 /* Poll vote options */
 #poll_options .options {
 	border-top-color: #CED2D8;
@@ -1296,9 +1250,9 @@ div.bbc_footnotes .meaction {
 }
 
 .poll_gradient {
+	border-color: #111111;
 	background: #5BA048;
 	background-image: linear-gradient(to bottom, #60BC78 0%, #27A348 100%);
-	border-color: #111;
 }
 
 /* On to the posts */
@@ -1347,9 +1301,9 @@ div.bbc_footnotes .meaction {
 	border-color: #AFAFAF;
 	border-top-color: #CFCFCF;
 	border-left-color: #BFBFBF;
+	border-radius: 0;
 	background: #F4F4F4 linear-gradient(to bottom, #FCFCFC 0%, #E5E5E5 100%);
 	box-shadow: 1px 1px 2px #EEEEEE;
-	border-radius: 0;
 }
 
 .poster_online .linklevel1:hover {
@@ -1379,17 +1333,20 @@ div.bbc_footnotes .meaction {
 
 /* attachment details below thumbnails */
 .attachment_name, .attachment_details {
-	border: solid 1px #afafaf;
+	color: #444444 !important;
+	border: solid 1px #AFAFAF;
 	background: #E4E4E4 !important;
-	color: #444 !important;
 }
+
 .attachment_name {
 	border-bottom: none;
 }
+
 .attachment_details {
 	border-top: none;
 	border-radius: 0 0 .5em .5em;
 }
+
 .generic_border .attachment_name {
 	border: 1px solid transparent;
 }
@@ -1400,7 +1357,7 @@ div.bbc_footnotes .meaction {
 }
 
 #elk_lb_content.expand {
-	border-color: #fff;
+	border-color: #FFFFFF;
 }
 
 #elk_lb_expand,
@@ -1415,18 +1372,17 @@ div.bbc_footnotes .meaction {
 	color: #CCCCCC;
 }
 
-.new_post_separator {
-	display: block;
-}
-
-.new_post_separator:after, .new_post_separator:before {
-	border-width: 10px 10px 0;
-	border-style: solid;
+.new_post_separator:after {
 	border-color: #E4E4E4 transparent;
 }
 
 .new_post_separator:before {
 	border-color: #BBBBBB transparent;
+}
+
+.new_post_separator {
+	display: block;
+	overflow: visible;
 }
 
 /* Used by video embed JS when autolinking video links */
@@ -1443,18 +1399,17 @@ div.bbc_footnotes .meaction {
 }
 
 .requiredfield {
+	color: #FEFEFE;
 	border-color: #2D5024;
 	border-right-color: #5AA049;
 	border-bottom-color: #5AA049;
 	background: #3D6E32;
-	color: #FEFEFE;
 }
 
 /* -------------------------------------------------------
  *	$EDITOR
  * -------------------------------------------------------
  */
-
 /* The main post editor section. */
 #preview_body {
 	border-color: #CED2D8;
@@ -1463,8 +1418,13 @@ div.bbc_footnotes .meaction {
 }
 
 #postAdditionalOptionsHeader, #postDraftOptionsHeader {
-	background: #FAFAFA;
-	background-image: linear-gradient(to bottom, #FAFAFA 0%, #EBEBEB 100%);
+	background: #FAFAFA linear-gradient(to bottom, #FAFAFA 0%, #EBEBEB 100%);
+	box-shadow: none;
+	border-color: #ccc;
+}
+
+#postDraftExpandLink {
+	color: #0A0A0A;
 }
 
 #postAdditionalOptions, #postDraftOptions {
@@ -1478,9 +1438,9 @@ div.bbc_footnotes .meaction {
 }
 
 .drop_area {
+	color: #444444;
 	border-color: #CCCCCC;
 	background-color: #E4E4E4;
-	color: #444444;
 }
 
 .statusbar {
@@ -1490,8 +1450,8 @@ div.bbc_footnotes .meaction {
 }
 
 .statusbar .insertoverlay {
-	background-color: #FAFAFA;
 	border-color: #A9CCD1;
+	background-color: #FAFAFA;
 }
 
 .insertoverlay .tabs li {
@@ -1503,8 +1463,8 @@ div.bbc_footnotes .meaction {
 }
 
 .statusbar .insertoverlay .button {
-	background: #008000;
 	color: #FAFAFA;
+	background: #008000;
 }
 
 .progressBar {
@@ -1512,12 +1472,12 @@ div.bbc_footnotes .meaction {
 }
 
 .progressBar div {
-	background-color: #008000;
 	color: #FEFEFE;
+	background-color: #008000;
 }
 
 .abort {
-	border: 2px solid #ff1310;
+	border: 2px solid #FF1310;
 }
 
 .share {
@@ -1525,7 +1485,7 @@ div.bbc_footnotes .meaction {
 }
 
 .drop_attachments_error {
-	color: #ff1310;
+	color: #FF1310;
 }
 
 #postMoreOptions {
@@ -1539,7 +1499,6 @@ div.bbc_footnotes .meaction {
 /* ------------------------------------------------------- */
 /*	$MODERATE	                                           */
 /* ------------------------------------------------------- */
-
 .split_messages .post {
 	border-top-color: #FEFEFE;
 }
@@ -1548,7 +1507,6 @@ div.bbc_footnotes .meaction {
  * $TABS
  * -------------------------------------------------------
  */
-
 .ui-tabs .ui-tabs-panel {
 	border-color: #CED2D8;
 	border-top-color: #CCCCCC;
@@ -1556,15 +1514,15 @@ div.bbc_footnotes .meaction {
 }
 
 .ui-tabs .ui-tabs-nav li {
+	color: #FEFEFE;
 	border: 1px #CCCCCC solid;
 	border-radius: 6px 6px 0 0;
-	color: #FEFEFE;
 }
 
 .ui-tabs .ui-tabs-nav .ui-tabs-anchor {
-	outline: none;
 	border-bottom-color: #CCCCCC;
 	border-radius: 6px 6px 0 0;
+	outline: none;
 	background: #F0F0F0;
 }
 
@@ -1575,8 +1533,8 @@ div.bbc_footnotes .meaction {
 
 .ui-tabs .ui-tabs-nav .ui-state-active .ui-tabs-anchor,
 .ui-tabs .ui-tabs-nav .ui-state-active {
-	background: #5F5F5F;
 	color: #FEFEFE;
+	background: #5F5F5F;
 	box-shadow: 1px 1px 2px #BBBBBB;
 }
 
@@ -1587,8 +1545,8 @@ div.bbc_footnotes .meaction {
 
 li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover,
 li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
-	background: #9FBFDF;
-	background: linear-gradient(to bottom, #9FBFDF, #F6F6F6);
+	background: #5F5F5F;
+	background: linear-gradient(to bottom, #5F5F5F, #F6F6F6);
 	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3) inset;
 }
 
@@ -1596,7 +1554,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $PROFILE
  * -------------------------------------------------------
  */
-
 #profile_attachments {
 	border-color: #CCCCCC;
 	background: #EEEEEE;
@@ -1616,7 +1573,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .profileblock ul li:not(:first-child):before {
-
 }
 
 #detailedinfo dt, #tracking dt, .profileblock dt {
@@ -1690,7 +1646,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $PERSONAL
  * -------------------------------------------------------
  */
-
 #personal_messages .capacity_bar {
 	border-color: #AFAFAF;
 }
@@ -1719,7 +1674,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $CALENDAR
  * -------------------------------------------------------
  */
-
 .birthday {
 	color: #920AC4;
 }
@@ -1748,15 +1702,12 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 #main_grid .weeks {
-
 }
 
 #main_grid .weeks a:hover {
-
 }
 
 #main_grid .days {
-
 }
 
 .weeklist {
@@ -1769,7 +1720,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .weeklist h4 a:hover {
-
 }
 
 .weekdays {
@@ -1781,7 +1731,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .hidelink {
-
 }
 
 /* Add a background that fits with the calendar. */
@@ -1793,7 +1742,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$HELP
  * -------------------------------------------------------
  */
-
 #helpmain {
 	border-color: #CCCCCC;
 	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
@@ -1820,7 +1768,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .popup_window.in.content {
-
 }
 
 /* The text content, hopefully helpful. */
@@ -1835,7 +1782,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$SEARCH
  * -------------------------------------------------------
  */
-
 #mlsearch_options {
 	border-color: #CED2D8;
 	background: #FAFAFA;
@@ -1859,7 +1805,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * -------------------------------------------------------
  */
 .mlist .mlist_header div {
-
 }
 
 .mlist li div, .whos_online dt div, .whos_online dd:nth-child(odd) div {
@@ -1892,11 +1837,10 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$LOGIN
  * -------------------------------------------------------
  */
-
 .coppa_contact {
+	color: #585858;
 	border-color: #585858;
 	background: #FEFEFE;
-	color: #585858;
 }
 
 .valid_input {
@@ -1911,7 +1855,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$BOXES
  * -------------------------------------------------------
  */
-
 /* Lotsa boxes. */
 .description, .information, .warningbox, .successbox, .infobox, .errorbox {
 	border-color: #CCCCCC;
@@ -1975,7 +1918,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *	$PROGRESS
  * -------------------------------------------------------
  */
-
 .progress_bar {
 	border-color: black;
 	background: white;
@@ -1998,7 +1940,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  * $STATISTICS
  * -------------------------------------------------------
  */
-
 .statistics .category_header {
 	border-bottom-color: #CCCCCC;
 	background: none;
@@ -2029,7 +1970,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 /* Status Bar Green */
 .statsbar .bar {
 	background: #47B263 linear-gradient(to bottom, #6F8CA5 0%, #9FBFDF 100%);
-
 }
 
 /* Absolute positioning stops these breaking the bars on narrow screens. */
@@ -2038,7 +1978,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 #stats {
-
 }
 
 #like_post_stats_overlay {
@@ -2047,13 +1986,12 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 
 /* floating error box currently used by like functionality */
 .floating_error {
+	color: #444444;
 	border-color: #E4E4E4;
 	background: #FEFEFE;
-	color: #444444;
 }
 
 .floating_error .error_heading {
-
 }
 
 .floating_error .error_msg {
@@ -2061,12 +1999,11 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 }
 
 .floating_error .error_btn {
-	border-top-color: #D1D1D1;
 	color: #0000FF;
+	border-top-color: #D1D1D1;
 }
 
 .floating_error .error_btn:hover {
-
 }
 
 /* -------------------------------------------------------
@@ -2078,14 +2015,11 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *
  * -------------------------------------------------------
  */
-
 /* Helpers */
-
 /*.icon-shade, .chevricon, button.icon, button > .icon, a > .icon, a.icon, a.warnicon, a > .warnicon, a.noticon, a > .infoicon {
 	-webkit-filter: drop-shadow(.1em .1em .1em rgba(0, 0, 0, 0.2));
 	filter: drop-shadow(.1em .1em .1em rgba(0, 0, 0, 0.2));
 } */
-
 /* , .board_icon */
 /*.icon-shadow {
 	-webkit-filter: drop-shadow(.1em .1em .1em rgba(0, 0, 0, 0.5));
@@ -2096,27 +2030,25 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	-webkit-filter: drop-shadow(.1em .1em .1em rgba(255, 255, 255, 0.2));
 	filter: drop-shadow(.1em .1em .1em rgba(255, 255, 255, 0.2));
 } */
-
 /* , .board_icon:hover */
 /*.icon-shadow:hover {
 	-webkit-filter: drop-shadow(.1em .1em .1em rgba(255, 255, 255, 0.5));
 	filter: drop-shadow(.1em .1em .1em rgba(255, 255, 255, 0.5));
 } */
-
 .warnicon {
-	border-color: #e86100;
+	border-color: #E86100;
 }
 
 .iconline {
-	background: #B4E391;
-	background-image: linear-gradient(to bottom, #B4E391 0%,#61C419 50%,#b4E391 100%);
 	border-color: #27A348;
+	background: #B4E391;
+	background-image: linear-gradient(to bottom, #B4E391 0%, #61C419 50%, #B4E391 100%);
 }
 
 .icoffline {
-	background: #BBBBBB;
-	background-image: linear-gradient(to bottom, #BBBBBB 0%,#6f6f6f 50%,#BBBBBB 100%);
 	border-color: #828282;
+	background: #BBBBBB;
+	background-image: linear-gradient(to bottom, #BBBBBB 0%, #6F6F6F 50%, #BBBBBB 100%);
 }
 
 /* -------------------------------------------------------
@@ -2143,7 +2075,6 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
  *
  * Of course, having comments to map em to px for each query is a good idea too.
  */
-
 /* This one does 1024 screens at default font size. */
 @media screen and (max-width: 64em) {
 	#menu_sidebar {
@@ -2161,13 +2092,13 @@ li.ui-tab.ui-tabs-active.ui-state-active.ui-state-hover .ui-tabs-anchor {
 	}
 
 	.listlevel1#button_profile .linklevel1 {
-
 	}
 
 	.mlist li div.posts {
 		border-right-color: #CCCCCC;
 	}
 }
+
 /* This one does 800 screens at default font size. */
 @media screen and (max-width: 50em) {
 	#main_menu .linklevel1.active, #main_menu .linklevel1.active:hover {

@@ -163,7 +163,7 @@ function template_unread()
 										', $txt['by'], ' ', $topic['last_post']['member']['link'], '<br />',
 										(!empty($topic['pages']) ? '
 										<ul class="small_pagelinks" id="pages' . $topic['first_post']['id'] . '" role="menubar">' . $topic['pages'] . '</ul>' : ''), '
-										<a class="topicicon i-last_post href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
+										<a class="topicicon i-last_post" href="', $topic['last_post']['href'], '" title="', $txt['last_post'], '"></a>
 									</div>
 								</aside>';
 

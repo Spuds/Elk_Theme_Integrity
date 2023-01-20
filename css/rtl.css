@@ -39,8 +39,6 @@
 /*		$PROGRESS............Nifty progress bars.
 /*		$MEDIA...............Experimental media queries.
 /* ------------------------------------------------------- */
-
-
 /*	$GENERAL	*/
 /* ------------------------------------------------------- */
 /* Selects don't like to behave across OS and browsers, unfortunately. */
@@ -54,8 +52,8 @@
 
 /* Dont show disabled buttons as active on hover */
 input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
-	border-left: 1px solid #AFAFAF;
 	border-right: 1px solid #BFBFBF;
+	border-left: 1px solid #AFAFAF;
 }
 
 /* @todo - A common, tag-agnostic class to hold submit buttons, etc. */
@@ -67,7 +65,6 @@ input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
 
 /*	$COMMON		*/
 /* ------------------------------------------------------- */
-
 /* Floats, overflows, clears. @todo */
 .floatright {
 	float: left;
@@ -105,8 +102,8 @@ input[type=submit][disabled]:hover, button[disabled], button[disabled]:hover {
 /* Category Header icons as sprites
 ------------------------------------------------- */
 h2 a.collapse {
-	margin: 2px 0 -2px 4px;
 	float: left;
+	margin: 2px 0 -2px 4px;
 }
 
 /* Upshrink image in the general category headers */
@@ -129,20 +126,20 @@ h2 a.collapse {
 
 /* More little boxes on a hillside. */
 .warningbox {
-	padding-left: 12px;
 	padding-right: 35px;
+	padding-left: 12px;
 	background: #FFF6CA url(../images/profile/warning_moderate.png) 99% 50% no-repeat;
 }
 
 .successbox {
-	padding-left: 12px;
 	padding-right: 35px;
+	padding-left: 12px;
 	background: #EEFFEE url(../images/icons/field_valid.png) 99% 50% no-repeat;
 }
 
 .infobox {
-	padding-left: 12px;
 	padding-right: 35px;
+	padding-left: 12px;
 	background: #D9EDF7 url(../images/icons/quick_sticky.png) 99% 50% no-repeat;
 }
 
@@ -167,7 +164,6 @@ h2 a.collapse {
 
 /*	$AJAX		*/
 /* ------------------------------------------------------- */
-
 /* The "Loading" bar for quick edit, etc. */
 #ajax_in_progress {
 	right: 0;
@@ -188,8 +184,8 @@ h2 a.collapse {
 }
 
 #search_form {
-	padding: 12px 8px 4px 3px;
 	float: left;
+	padding: 12px 8px 4px 3px;
 }
 
 #search_form * {
@@ -217,8 +213,8 @@ h2 a.collapse {
 
 /* Tweak the logo */
 #logo {
-	margin: 0 0 0 8px;
 	float: left;
+	margin: 0 0 0 8px;
 }
 
 .rightheader #logo {
@@ -227,15 +223,15 @@ h2 a.collapse {
 
 /* The user info, news, etc.*/
 #news {
-	margin-left: 0;
 	margin-right: -1px;
+	margin-left: 0;
 }
 
 /* Main forum area. */
 /* The footer with copyright links etc. */
 #footer_section li {
-	padding-left: 5px;
 	padding-right: 0;
+	padding-left: 5px;
 }
 
 #footer_section .rssfeeds {
@@ -281,8 +277,8 @@ h2 a.collapse {
 /* Reposition Level 2 drop menu as visible on hover. */
 /* @todo - Check Superfish class. I think .sfhover may be deprecated. */
 .listlevel1:hover .menulevel2, .listlevel1.sfhover .menulevel2 {
-	left: auto;
 	right: 0;
+	left: auto;
 }
 
 .listlevel1#button_profile:hover .menulevel2, .listlevel1#button_profile.sfhover .menulevel2 {
@@ -292,14 +288,14 @@ h2 a.collapse {
 
 /* Hiding Level 3 drop menu off hover. */
 .listlevel1:hover .menulevel3, .listlevel1.sfhover .menulevel3 {
-	left: auto;
 	right: -9999px;
+	left: auto;
 }
 
 /* Reposition Level 3 drop menu as visible on hover. */
 .listlevel2:hover .menulevel3, .listlevel2.sfhover .menulevel3 {
-	left: auto;
 	right: -14px;
+	left: auto;
 }
 
 /* @todo - Note: The next declarations are for keyboard access with js disabled. */
@@ -330,8 +326,8 @@ h2 a.collapse {
 /* Same styling for Level 1 and Level 2. */
 #menu_sidebar .listlevel1:hover .menulevel2,
 #menu_sidebar .listlevel1.sfhover .menulevel2 {
-	left: auto;
 	right: 170px;
+	left: auto;
 }
 
 /* @todo - Note: The next declarations are for keyboard access with js disabled. */
@@ -348,13 +344,12 @@ h2 a.collapse {
 	margin-right: 0;
 }
 */
-
 /*	$LINKTREE	*/
 /* ------------------------------------------------------- */
 /* The navigation list (i.e. linktree) */
 .navigate_section {
-	padding-left: 1em;
 	padding-right: 0;
+	padding-left: 1em;
 }
 
 .linktree {
@@ -379,14 +374,8 @@ h2 a.collapse {
 /* These classes share some styling.
 /* Declarations are amalgamated where styling is shared.
 /* ------------------------------------------------------- */
-
 /* Styles for the standard button lists.
 /* ------------------------------------------------------- */
-.buttonlist li {
-	float: right;
-	margin: 0 4px 0 0;
-}
-
 /* The quick buttons. */
 /* ------------------------------------------------------- */
 .quickbuttons {
@@ -426,13 +415,13 @@ h2 a.collapse {
 	margin: 0 9910px 0 -9910px;
 }*/
 .quickbuttons .linklevel1:before, .quickbuttons .linklevel2:before {
-	left: auto;
 	right: 3px;
+	left: auto;
 }
 
 .quickmod_check {
-	left: auto;
 	right: 3px;
+	left: auto;
 }
 
 /* Quickbutton and follow ups drop menus. */
@@ -442,8 +431,8 @@ h2 a.collapse {
 
 .quickbuttons .listlevel1:hover .menulevel2,
 .quickbuttons .listlevel1.sfhover .menulevel2 {
-	left: -1px;
 	right: auto;
+	left: -1px;
 }
 
 .quickbuttons .linklevel2 {
@@ -452,7 +441,6 @@ h2 a.collapse {
 
 /*	$PAGELINKS	*/
 /* ------------------------------------------------------- */
-
 /* Necessary for some browsers to keep the pages all on the same line */
 .linavPages {
 	float: right;
@@ -490,8 +478,8 @@ h2 a.collapse {
 }
 
 #pages_scroll_left {
-	left: auto;
 	right: 0;
+	left: auto;
 }
 
 #pages_scroll_right {
@@ -501,19 +489,18 @@ h2 a.collapse {
 
 /* Globally accessible top/bottom links. */
 #gotop, #gobottom {
-	left: auto;
 	right: 0;
+	left: auto;
 }
 
 /* Skip navigation link. */
 #top {
-	left: auto;
 	right: 3em;
+	left: auto;
 }
 
 /*	$TABLES		*/
 /* ------------------------------------------------------- */
-
 /* A general table class. */
 .table_head > th {
 	text-align: right;
@@ -526,7 +513,6 @@ h2 a.collapse {
 
 /* $SETTINGS	*/
 /* ------------------------------------------------------- */
-
 /* Lists - settings use these a lot.
 /* @todo - Inefficient selector. Should not need dl tag. */
 dl.settings {
@@ -554,8 +540,9 @@ dl.settings img {
 /* ------------------------------------------------------- */
 /* The board categories and newsfader - some shared styling. */
 .icon_anchor {
-	padding: 2px 0 0 6px;
 	float: right;
+	padding: 2px 0 0 6px;
+	transform: scaleX(-1);
 }
 
 .board_info .board_description, .board_info .moderators {
@@ -567,9 +554,9 @@ dl.settings img {
 }
 
 .board_stats {
-	text-align: left;
-	padding: 1px 6px 1px 0;
 	float: left;
+	padding: 1px 6px 1px 0;
+	text-align: left;
 }
 
 .board_avatar {
@@ -643,8 +630,8 @@ dl.settings img {
 }
 
 .topic_stats {
-	text-align: left;
 	float: left;
+	text-align: left;
 }
 
 .topic_lastpost img {
@@ -686,14 +673,12 @@ dl.settings img {
 .search_results_posts .stickybg, .search_results_posts .locked_stickybg {
 	background: #fffee2 url(../images/icons/quick_sticky_lock.png) no-repeat 5% 15px;
 }*/
-
 #topic_icons {
 	float: right;
 }
 
 /*	$TOPICS		*/
 /* ------------------------------------------------------- */
-
 /* The display template (topic view).
 /* Events */
 .edit_event {
@@ -734,8 +719,8 @@ dl.settings img {
 
 /* Drop menu for the poster info. */
 .poster .listlevel1.sfhover .menulevel2, .poster .listlevel1:hover .menulevel2 {
-	left: auto;
 	right: 0;
+	left: auto;
 	text-align: right;
 }
 
@@ -797,18 +782,17 @@ dl.settings img {
 
 /* The send topic section. */
 .requiredfield:before {
-	left: auto;
 	right: 5%;
+	left: auto;
 }
 
 .requiredfield {
-	left: auto;
 	right: 5%;
+	left: auto;
 }
 
 /*	$EDITOR		*/
 /* ------------------------------------------------------- */
-
 /* The main post editor section. */
 #post_header dt, .postbox dt {
 	float: right;
@@ -848,9 +832,9 @@ ul.post_options li {
 
 /* The event editor section. */
 #event_main #datepicker, #event_main #caption_evtitle {
+	padding-top: 0.5em;
 	padding-right: 1em;
 	padding-left: 0;
-	padding-top: 0.5em;
 }
 
 #event_main .event_options {
@@ -864,18 +848,18 @@ ul.post_options li {
 
 /* The poll editor section. */
 #poll_main #question {
-	margin-left: auto;
 	margin-right: 2em;
+	margin-left: auto;
 }
 
 #poll_main .poll_main li {
-	padding-left: auto;
 	padding-right: 12px;
+	padding-left: auto;
 }
 
 #poll_main .poll_main input {
-	margin-left: auto;
 	margin-right: 12px;
+	margin-left: auto;
 }
 
 #poll_main .poll_main, dl.poll_options {
@@ -896,7 +880,6 @@ ul.post_options li {
 
 /*	$MODERATE	*/
 /* ------------------------------------------------------- */
-
 /* The move topic section. */
 .split_topics, .move_topic {
 	text-align: right;
@@ -935,8 +918,8 @@ ul.post_options li {
 }
 
 #basicinfo .windowbg .content {
-	padding-left: 0;
 	padding-right: 30px;
+	padding-left: 0;
 }
 
 .profileblock .cf_icon {
@@ -1000,8 +983,8 @@ ul.post_options li {
 }
 
 .activity_stats li .bar span {
-	left: auto;
 	right: -1555em;
+	left: auto;
 }
 
 /* Most popular boards by posts and activity */
@@ -1069,7 +1052,6 @@ ul.post_options li {
 
 /* $PERSONAL	*/
 /* ------------------------------------------------------- */
-
 #personal_messages .capacity_bar {
 	margin: 6px 12px 0 0;
 }
@@ -1101,8 +1083,8 @@ div.labels {
 }
 
 .label_pms li {
-	margin-left: 0;
 	margin-right: 0.5em;
+	margin-left: 0;
 }
 
 /* $CALENDAR	*/
@@ -1135,7 +1117,6 @@ div.labels {
 
 /* MENTIONS	*/
 /* ------------------------------------------------------- */
-
 /* $STATISTICS	*/
 /* ------------------------------------------------------- */
 .statistics .category_header {
@@ -1183,10 +1164,8 @@ div.labels {
 	padding: 4px 60px 4px 8px;
 }
 
-
 /*	$HELP		*/
 /* ------------------------------------------------------- */
-
 /* Styles for the help section. */
 #helpmain ul {
 	margin: 0 25px 0 0;
@@ -1194,8 +1173,8 @@ div.labels {
 
 /* Yes some ugly importants since we don't have specific admin rtl css */
 .settings .help .icon {
-	margin: 1px -25px 0 0 !important;
 	position: absolute !important;
+	margin: 1px -25px 0 0 !important;
 }
 
 #admincenter .content .settings {
@@ -1204,14 +1183,14 @@ div.labels {
 
 /* Styles for the tooltips. */
 .tooltip {
-	left: auto;
 	right: -9999px;
+	left: auto;
 }
 
 /* The darkened background for help pop-ups. */
 .popup_container {
-	left: auto;
 	right: 0;
+	left: auto;
 }
 
 /* The hide icon (red cross). */
@@ -1222,7 +1201,6 @@ div.labels {
 
 /*	$SEARCH		*/
 /* ------------------------------------------------------- */
-
 /* The advanced search section. */
 #advanced_search dt {
 	float: right;
@@ -1257,13 +1235,12 @@ div.labels {
 }
 
 #mlsearch_options .mlsearch_option .input_check {
-	margin-left: 0;
 	margin-right: 0.5em;
+	margin-left: 0;
 }
 
 /*	$LOGIN		*/
 /* ------------------------------------------------------- */
-
 /* Styles for the login areas. */
 /* @todo - Width would be better in em. */
 .login dl {
@@ -1294,8 +1271,8 @@ div.labels {
 }
 
 .coppa_contact {
-	margin-left: 0;
 	margin-right: 5ex;
+	margin-left: 0;
 }
 
 /* Styles for maintenance mode. */
@@ -1310,7 +1287,6 @@ div.labels {
 
 /*	$ERRORS		*/
 /* ------------------------------------------------------- */
-
 /* Styles for (fatal) errors. */
 .errorbox {
 	padding: 7px 35px 7px 10px;
@@ -1319,8 +1295,8 @@ div.labels {
 
 .errorbox .listlevel1,
 .warningbox .listlevel1 {
-	padding-left: 0;
 	padding-right: 1em;
+	padding-left: 0;
 }
 
 .errorbox .alert {
@@ -1328,13 +1304,12 @@ div.labels {
 }
 
 .errorbox .smalltext {
-	padding-left: 0;
 	padding-right: 1em;
+	padding-left: 0;
 }
 
 /*	$PROGRESS	*/
 /* ------------------------------------------------------- */
-
 /*	$MEDIA		*/
 /* ------------------------------------------------------- */
 /* This one does 800 screens at default font size. */
@@ -1354,8 +1329,8 @@ div.labels {
 	}
 
 	#menu_sidebar {
-		left: auto;
 		right: -0.8em;
+		left: auto;
 	}
 
 	#menu_sidebar:hover {
@@ -1397,8 +1372,8 @@ div.labels {
 	}
 
 	dd {
-		padding-left: 0;
 		padding-right: 8% !important;
+		padding-left: 0;
 	}
 
 	#main_content_section {
@@ -1410,8 +1385,8 @@ div.labels {
 	}
 
 	#wrapper {
-		padding-left: 2px;
 		padding-right: 2px;
+		padding-left: 2px;
 	}
 
 	#gotop {
@@ -1454,8 +1429,8 @@ div.labels {
 	}
 
 	.listlevel2:hover .menulevel3, .listlevel2.sfhover .menulevel3 {
-		left: auto;
 		right: -4px;
+		left: auto;
 	}
 
 	#main_menu li ul li, .admin_menu li ul li {
@@ -1519,7 +1494,7 @@ div.labels {
 }
 
 #manage_boards li .floatleft:before {
+	float: right !important;
 	padding-right: 0 !important;
 	padding-left: 5px;
-	float: right !important;
 }

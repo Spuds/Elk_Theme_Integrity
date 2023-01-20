@@ -1,6 +1,5 @@
 /* Common admin center classes.
 ------------------------------------------------------- */
-
 .action_admin .generic_list_wrapper .information {
 	border-color: #CCCCCC;
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
@@ -193,7 +192,6 @@
 
 /* Styles for the file permissions section.
 ------------------------------------------------- */
-
 .perm_read {
 	background-color: #D1F7BF;
 }
@@ -213,6 +211,7 @@
 .perm_nochange {
 	background-color: #EEEEEE;
 }
+
 /* Styles for the moderation center.
 ------------------------------------------------- */
 #modcenter {
@@ -241,7 +240,6 @@
 
 /* Styles for the error log.
 ------------------------------------------------- */
-
 #error_log {
 	border-top-color: #DDDDDD;
 }
