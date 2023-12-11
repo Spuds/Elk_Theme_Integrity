@@ -1260,6 +1260,7 @@ a.bbc_link {
 	padding: 5px;
 	border: 1px solid;
 	border-radius: 4px;
+	min-height: calc(100vh - 120px);
 }
 
 /* The user info, news, etc.*/
@@ -2722,7 +2723,7 @@ a.bbc_link {
 }
 
 .ic_recent .ic_recent_avatar {
-	margin: 4px 0;
+	margin: 4px;
 }
 
 .ic_recent_avatar, .ic_recent_avatar > img {
@@ -3377,7 +3378,7 @@ img.new_posts {
 .poster .listlevel1.sfhover .menulevel2 {
 	top: -7px;
 	left: -2px;
-	width: 30em;
+	width: 32em;
 	padding: 6px 1em 4px 1em;
 	text-align: left;
 }

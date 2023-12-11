@@ -9,7 +9,7 @@
  * copyright:	2011 Simple Machines (http://www.simplemachines.org)
  * license:  	BSD, See included LICENSE.TXT for terms and conditions.
  *
- * @version 1.1.9
+ * @version 1.1.10
  *
  */
 
@@ -379,7 +379,7 @@ function template_th_search_bar()
 		echo '
 					<input type="hidden" name="', (!empty($modSettings['search_dropdown']) ? 'sd_topic' : 'topic'), '" value="', $context['current_topic'], '" />';
 	// If we're on a certain board, limit it to this board ;).
-	elseif (!empty($context['current_board']))
+	if (!empty($context['current_board']))
 		echo '
 					<input type="hidden" name="', (!empty($modSettings['search_dropdown']) ? 'sd_brd[' : 'brd['), $context['current_board'], ']"', ' value="', $context['current_board'], '" />';
 
@@ -856,7 +856,11 @@ function template_news_fader()
 		</ul>';
 
 	addInlineJavascript('
-		$(\'#elkFadeScroller\').Elk_NewsFader(' . (empty($settings['newsfader_time']) ? '' : '{\'iFadeDelay\': ' . $settings['newsfader_time'] . '}') . ');', true);
+		document.addEventListener("DOMContentLoaded", () => {
+		if (typeof Elk_NewsFader !== \'undefined\') {
+			$(\'#elkFadeScroller\').Elk_NewsFader(' . (empty($settings['newsfader_time']) ? '' : '{\'iFadeDelay\': ' . $settings['newsfader_time'] . '}') . ');
+		}
+		});', true);
 }
 
 /**

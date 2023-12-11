@@ -191,7 +191,15 @@ function template_ic_recent_posts()
 			if (empty($user_profile[$post['poster']['id']]['avatar']))
 			{
 				loadMemberData($post['poster']['id']);
+				if (!empty($user_profile[$post['poster']['id']]))
+				{
 				$user_profile[$post['poster']['id']]['avatar'] = determineAvatar($user_profile[$post['poster']['id']]);
+				}
+				else
+				{
+					// Guest
+					$user_profile[$post['poster']['id']]['avatar']['image'] = '';
+				}
 			}
 
 			echo '
